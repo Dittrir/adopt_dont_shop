@@ -42,6 +42,8 @@ RSpec.describe 'the application show page' do
       expect(page).to have_content("Add a Pet to this Application")
       fill_in("Search", with:"Lobster")
       click_button('Submit')
+
+      expect(current_path).to eq("/applications/#{@application_1.id}")
     end
   end
 end
