@@ -7,8 +7,13 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create(application_params)
-    redirect_to "/applications/#{@application.id}"
+    application = Application.create(application_params)
+    if application.save
+      redirect_to "/applications/#{application.id}"
+    else
+      flash[:notice] = "Application not created: Fields can't be left blank."
+      render :new
+    end
   end
 
 private

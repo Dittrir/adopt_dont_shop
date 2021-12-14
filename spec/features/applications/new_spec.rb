@@ -29,4 +29,11 @@ RSpec.describe 'The new application page' do
     expect(page).to have_content("Looking for a Dragon")
     expect(page).to have_content("In Progress")
   end
+
+  it 'shows an error message if all of the fields arent filled out' do
+    visit '/applications/new'
+
+    click_button('Submit')
+    expect(page).to have_content("Application not created: Fields can't be left blank.")
+  end
 end
