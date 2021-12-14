@@ -36,4 +36,6 @@ RSpec.describe 'The new application page' do
     click_button('Submit')
     expect(page).to have_content("Application not created: Fields can't be left blank.")
   end
+
+  
 end

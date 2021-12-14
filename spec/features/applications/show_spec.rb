@@ -35,5 +35,13 @@ RSpec.describe 'the application show page' do
 
       expect(page).to have_current_path("/pets/#{@pet_2.id}")
     end
+
+    it 'has a section on the page to add a pet to the application' do
+      visit "/applications/#{@application_1.id}"
+
+      expect(page).to have_content("Add a Pet to this Application")
+      fill_in("Search", with:"Lobster")
+      click_button('Submit')
+    end
   end
 end
