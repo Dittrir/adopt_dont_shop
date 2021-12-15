@@ -6,8 +6,6 @@ RSpec.describe 'the application show page' do
     @shelter_1 = Shelter.create!(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
     @pet_1 = @shelter_1.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: @shelter_1.id)
     @pet_2 = @shelter_1.pets.create!(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster', shelter_id: @shelter_1.id)
-    # @pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_1.id)
-    # @pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
   end
 
   describe 'display' do
