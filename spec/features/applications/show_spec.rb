@@ -6,8 +6,8 @@ RSpec.describe 'the application show page' do
     @shelter_1 = Shelter.create!(name: 'Aurora shelter', city: 'Aurora, CO', foster_program: false, rank: 9)
     @pet_1 = @shelter_1.pets.create!(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: @shelter_1.id)
     @pet_2 = @shelter_1.pets.create!(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster', shelter_id: @shelter_1.id)
-    @pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_1.id)
-    @pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
+    # @pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_1.id)
+    # @pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
   end
 
   describe 'display' do
@@ -24,6 +24,9 @@ RSpec.describe 'the application show page' do
     end
 
     it 'includes the names of all the pets that the application is for with links to show page' do
+      pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_1.id)
+      pet_application_2 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
+
       visit "/applications/#{@application_1.id}"
 
       click_link "#{@pet_1.name}"
@@ -47,6 +50,9 @@ RSpec.describe 'the application show page' do
     end
 
     it 'adds the pet to the page if found' do
+      pet_application_1 = @application_1.pet_applications.create!(pet_id: @pet_1.id)
+      pet_application_2 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
+
       visit "/applications/#{@application_1.id}"
 
       fill_in("Search", with:"Lobster")
@@ -60,6 +66,20 @@ RSpec.describe 'the application show page' do
 
       click_button('Submit')
       expect(page).to have_content("No results found. Please try again.")
+    end
+
+    it 'displays a button called Adopt this Pet next to each pet that allows the user to click' do
+      pet_application_2 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
+
+      visit "/applications/#{@application_1.id}"
+
+      fill_in("Search", with:"Lobster")
+      click_button('Submit')
+
+      expect(page).to have_content("Lobster")
+      click_button('Adopt this Pet')
+
+      expect(current_path).to eq("/applications/#{@application_1.id}")
     end
   end
 end

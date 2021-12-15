@@ -78,7 +78,7 @@ Then I can see the following:
 ```
 
 ```
-[ ] done
+[X] done
 
 Starting an Application
 
@@ -100,7 +100,7 @@ And I see an indicator that this application is "In Progress"
 ```
 
 ```
-[ ] done
+[X] done
 
 Starting an Application, Form not Completed
 
@@ -113,14 +113,14 @@ And I see a message that I must fill in those fields.
 ```
 
 ```
-[ ] done
+[X] done
 
 Searching for Pets for an Application
 
 As a visitor
 When I visit an application's show page
 And that application has not been submitted,
-Then I see a section on the page to "Add a Pet to this Application"
+Then I see a section on the page to search
 In that section I see an input where I can search for Pets by name
 When I fill in this field with a Pet's name
 And I click submit,
@@ -129,7 +129,7 @@ And under the search bar I see any Pet whose name matches my search
 ```
 
 ```
-[ ] done
+[X] done
 
 Add a Pet to an Application
 

@@ -9,7 +9,7 @@
 <p>Application Status: <%= @application.status %></p>
 <p>Pets that Application is for:</p>
 <% @application.pets.each do |pet| %>
-  <p><%=link_to "#{pet.name}", "/pets/#{pet.id}", method: :get %></p>
+  <p><%=link_to "#{pet.name}", "/pets/#{pet.id}", method: :get %></p><p><%=button_to "Adopt this Pet", "/applications/#{@application.id}", method: :patch %></p>
 <% end %>
 
 <p>Add a Pet to this Application</p>
