@@ -67,9 +67,9 @@ RSpec.describe 'the application show page' do
     end
 
     it 'displays a button called Adopt this Pet next to each pet that allows the user to click' do
-      pet_application_2 = @application_1.pet_applications.create!(pet_id: @pet_2.id)
-
       visit "/applications/#{@application_1.id}"
+
+      expect(page).to_not have_content("Lobster")
 
       fill_in("Search", with:"Lobster")
       click_button('Submit')
