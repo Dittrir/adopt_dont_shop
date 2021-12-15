@@ -1,6 +1,12 @@
 class ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
+    search = Pet.find_by(name: params[:search])
+    if search
+      @application.pet_applications.create(pet_id: search.id)
+    else
+      flash[:notice] = "No results found. Please try again."
+    end
   end
 
   def new

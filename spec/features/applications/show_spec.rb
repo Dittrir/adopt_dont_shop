@@ -45,5 +45,21 @@ RSpec.describe 'the application show page' do
 
       expect(current_path).to eq("/applications/#{@application_1.id}")
     end
+
+    it 'adds the pet to the page if found' do
+      visit "/applications/#{@application_1.id}"
+
+      fill_in("Search", with:"Lobster")
+      click_button('Submit')
+
+      expect(page).to have_content("Lobster")
+    end
+
+    it 'if the pet is not found it will add a fail message' do
+      visit "/applications/#{@application_1.id}"
+
+      click_button('Submit')
+      expect(page).to have_content("No results found. Please try again.")
+    end
   end
 end
