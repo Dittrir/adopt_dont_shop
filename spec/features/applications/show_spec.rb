@@ -79,5 +79,22 @@ RSpec.describe 'the application show page' do
 
       expect(current_path).to eq("/applications/#{@application_1.id}")
     end
+
+    # it 'to submit the application it links the description form' do
+    #   visit "/applications/#{@application_1.id}"
+    #
+    #   fill_in("Search", with:"Lobster")
+    #   click_button('Submit')
+    #   click_button('Adopt this Pet')
+    #
+    #   expect(current_path).to eq("/applications/#{@application_1.id}")
+    #   expect(page).to have_content("What makes you a good owner?")
+    #
+    #   fill_in('Description', with: "I love lobsters")
+    #   click_link('Submit')
+    #
+    #   expect(current_path).to eq("/applications/#{@application_1.id}")
+    #   expect(page).to have_content('Status: pending')
+    # end
   end
 end
